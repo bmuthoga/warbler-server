@@ -2,6 +2,8 @@ require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const morgan = require('morgan')
+const winston = require('./config/winston')
 const errorHandler = require('./handlers/error')
 const authRoutes = require('./routes/auth')
 const messageRoutes = require('./routes/message')
@@ -11,6 +13,7 @@ const { loginRequired, ensureCorrectUser } = require('./middleware/auth')
 const PORT = process.env.PORT || 8081
 const app = express()
 
+app.use(morgan('combined', { stream: winston.stream }))
 app.use(cors())
 app.use(bodyParser.json())
 

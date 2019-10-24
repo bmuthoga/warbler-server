@@ -1,5 +1,8 @@
 const mongoose = require('mongoose')
-mongoose.set('debug', true)
+
+if (process.env.NODE_ENV !== 'production') {
+  mongoose.set('debug', true)
+}
 mongoose.Promise = Promise
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/warbler', {
   keepAlive: true,
