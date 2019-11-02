@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/bmuthoga/warbler-server.svg?style=svg)](https://circleci.com/gh/bmuthoga/warbler-server)
+
 # Warbler Server
 A repository containing the backend API for Warbler
 
