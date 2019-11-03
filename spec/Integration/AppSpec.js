@@ -3,7 +3,7 @@ process.env.NODE_ENV = 'development'
 process.env.MONGODB_URI = 'mongodb://localhost/warbler-test'
 
 const mongoose = require('mongoose')
-const app = require('../../')
+const server = require('../../')
 const authTests = require('./AuthSpec')
 const messagesTests = require('./AllMessagesSpec')
 const miscellaneousTests = require('./MiscellaneousSpec')
