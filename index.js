@@ -1,5 +1,7 @@
 require('dotenv').config()
 const express = require('express')
+const http = require('http')
+const helmet = require('helmet')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
@@ -12,8 +14,47 @@ const { loginRequired, ensureCorrectUser } = require('./middleware/auth')
 
 const PORT = process.env.PORT || 8081
 const app = express()
+const server = http.createServer(app)
 
-app.use(morgan('combined', { stream: winston.stream }))
+/**
+* Event listener for HTTP server "listening" event.
+ *
+ * @param {Object} server the http server instance
+ *
+ * @returns {null} server process is continous here, so no returns
+ */
+function onListening (server) {
+  // console.log('server', server);
+  const addr = server.address()
+  const bind = typeof addr === 'string'
+    ? `pipe ${addr}`
+    : `port ${addr.port}`
+
+  winston.info(`🚧 Server is listening on ${bind}`)
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ * @param {Error} error an error message
+ * @returns {null} error already logged exits process
+ */
+function onError (error) {
+  return winston.error(error.message)
+}
+
+app.use(helmet())
+app.use(express.urlencoded({ extended: false }))
+
+// Request Logging Middleware
+app.use((req, res, next) => {
+  return morgan('combined', {
+    immediate: true,
+    stream: {
+      write: msg => winston.info(msg.trim())
+    }
+  })(req, res, next)
+})
+
 app.use(cors())
 app.use(bodyParser.json())
 
@@ -38,8 +79,9 @@ app.use((req, res, next) => {
 
 app.use(errorHandler)
 
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`)
-})
+server.on('listening', onListening.bind(null, server))
+  .on('error', onError)
 
-module.exports = app
+server.listen(PORT)
+
+module.exports = server

@@ -1,4 +1,4 @@
-const winston = require('winston')
+const winston = require('../config/winston')
 
 function errorHandler(error, request, response, next) {
   // adding winston logging
