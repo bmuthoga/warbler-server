@@ -24,7 +24,6 @@ const server = http.createServer(app)
  * @returns {null} server process is continous here, so no returns
  */
 function onListening (server) {
-  // console.log('server', server);
   const addr = server.address()
   const bind = typeof addr === 'string'
     ? `pipe ${addr}`
@@ -84,4 +83,7 @@ server.on('listening', onListening.bind(null, server))
 
 server.listen(PORT)
 
-module.exports = server
+module.exports = {
+  server,
+  onError
+}
