@@ -9,12 +9,21 @@ const nock = require('nock')
 const { server } = require('..')
 const winston = require('../config/winston')
 
-const authIntegrationTests = require('./integration/AuthSpec')
+// const authIntegrationTests = require('./integration/AuthSpec')
 // const messagesIntegrationTests = require('./integration/AllMessagesSpec')
 // const miscellaneousIntegrationTests = require('./integration/MiscellaneousSpec')
 // const postUserMessagesIntegrationTests = require('./integration/PostUserMessagesSpec')
 // const getUserMessagesIntegrationTests = require('./integration/GetUserMessagesSpec')
 // const deleteUserMessagesIntegrationTests = require('./integration/DeleteUserMessagesSpec')
+
+const {
+  authIntegrationTests,
+  messagesIntegrationTests,
+  miscellaneousIntegrationTests,
+  postUserMessagesIntegrationTests,
+  getUserMessagesIntegrationTests,
+  deleteUserMessagesIntegrationTests
+} = require('./integration')
 
 const miscellaneousUnitTests = require('./unit/MiscellaneousSpec')
 const authUnitTests = require('./unit/AuthSpec')
