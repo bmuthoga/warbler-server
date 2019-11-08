@@ -28,7 +28,7 @@ Create a `.env` file and set the following required environment variables in it:
 
 
 ## Running Tests
-```(Work in Progress)```
+```yarn test```
 
 ## Built With
 [NPM](https://www.npmjs.com/) - Dependency Management
