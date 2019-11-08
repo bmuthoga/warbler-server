@@ -1,4 +1,4 @@
-const apiCall = require('./utils/Utils')
+const { apiCall } = require('../utils/Utils')
 
 module.exports = () => {
   describe('Auth Routes', () => {
@@ -22,7 +22,7 @@ module.exports = () => {
           expect(res.body.username).toEqual('testemail')
           done()
         } catch (err) {
-          done()
+          done(err)
         }
       })
       
@@ -67,7 +67,7 @@ module.exports = () => {
           expect(res.body.username).toBe('hacker')
           done()
         } catch (err) {
-          done()
+          done(err)
         }
       })
     })
@@ -103,7 +103,7 @@ module.exports = () => {
           expect(res.body.token).toBeDefined()
           done()
         } catch (err) {
-          done()
+          done(err)
         }
       })
   
@@ -190,7 +190,7 @@ module.exports = () => {
           expect(res.body.token).toBeDefined()
           done()
         } catch (err) {
-          done()
+          done(err)
         }
       })      
     })

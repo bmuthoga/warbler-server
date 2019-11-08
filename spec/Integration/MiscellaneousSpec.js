@@ -1,6 +1,6 @@
-const apiCall = require('./utils/Utils')
+const { apiCall } = require('../utils/Utils')
 const winston = require('../../config/winston')
-const { onError } = require('../../')
+const { onError } = require('../..')
 
 module.exports = () => {
   describe('Miscellaneous', () => {
@@ -33,7 +33,7 @@ module.exports = () => {
         expect(winston.info).toHaveBeenCalled()
         done()
       } catch (err) {
-        done()
+        done(err)
       }
     })
 
