@@ -21,8 +21,6 @@ jobs: # a collection of steps
           paths:
             - ./node_modules
       - run: # run tests
-        ls -l /home/circleci/warbler-server
-        ls -l /var/user_image
           name: test
           command: npm test
       - run: # run coverage report
@@ -38,3 +36,5 @@ jobs: # a collection of steps
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: test-results.xml
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
+ls -l /home/circleci/warbler-server
+ls -l /var/user_image
