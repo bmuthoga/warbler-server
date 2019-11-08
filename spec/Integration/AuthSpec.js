@@ -1,7 +1,7 @@
 const { apiCall } = require('../utils/Utils')
 
 module.exports = () => {
-  describe('Auth Routes', () => {
+  return describe('Auth Routes', () => {
   
     describe('Signup - /api/auth/signup', () => {
       it('should successfully signup a new user', async done => {
