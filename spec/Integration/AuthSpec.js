@@ -1,6 +1,6 @@
 const { apiCall } = require('../utils/Utils')
 
-const authSpec = () => {
+module.exports = () => {
   describe('Auth Routes', () => {
   
     describe('Signup - /api/auth/signup', () => {
@@ -195,8 +195,4 @@ const authSpec = () => {
       })      
     })
   })
-}
-
-module.export = {
-  authSpec
 }
