@@ -1,4 +1,4 @@
-const apiCall = require('./utils/Utils')
+const { apiCall } = require('../utils/Utils')
 
 module.exports = () => {
   describe('All Messages - /api/messages', () => {
@@ -29,7 +29,7 @@ module.exports = () => {
         expect(Array.isArray(res.body)).toBe(true)
         done()
       } catch (err) {
-        done()
+        done(err)
       }
     })
     
@@ -47,7 +47,7 @@ module.exports = () => {
       }
     })
 
-    it('should return 401 if invalid token is passed in header', async done => {
+    it('should return 401 if invalid token is passed in authorization header', async done => {
       try {
         const options = {
           apiEndpoint: '/api/messages',
