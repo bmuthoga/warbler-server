@@ -54,12 +54,12 @@ describe('API Tests', () => {
       }
     })
   
-    miscellaneousIntegrationTests()
+    // miscellaneousIntegrationTests()
     // authIntegrationTests()
-    messagesIntegrationTests()
-    postUserMessagesIntegrationTests()
-    getUserMessagesIntegrationTests()
-    deleteUserMessagesIntegrationTests()
+    // messagesIntegrationTests()
+    // postUserMessagesIntegrationTests()
+    // getUserMessagesIntegrationTests()
+    // deleteUserMessagesIntegrationTests()
   })
 
   describe('Unit Tests', () => {
