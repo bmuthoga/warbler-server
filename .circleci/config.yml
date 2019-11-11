@@ -12,14 +12,18 @@ jobs: # a collection of steps
           command: 'sudo npm install -g npm@latest'
       - restore_cache: # special step to restore the dependency cache
           # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+        #   key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
       - run:
           name: install-npm-wee
           command: npm install
       - save_cache: # special step to save the dependency cache
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+        #   key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
           paths:
-            - ./node_modules
+            - ~/circleci-demo-workflows
+        #   paths:
+        #     - ./node_modules
       - run: # run tests
           name: test
           command: npm test
@@ -36,5 +40,3 @@ jobs: # a collection of steps
       - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: test-results.xml
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
-ls -l /home/circleci/warbler-server
-ls -l /var/user_image
