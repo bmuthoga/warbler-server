@@ -9,21 +9,12 @@ const nock = require('nock')
 const { server } = require('..')
 const winston = require('../config/winston')
 
-// const authIntegrationTests = require('./integration/AuthSpec')
-// const messagesIntegrationTests = require('./integration/AllMessagesSpec')
-// const miscellaneousIntegrationTests = require('./integration/MiscellaneousSpec')
-// const postUserMessagesIntegrationTests = require('./integration/PostUserMessagesSpec')
-// const getUserMessagesIntegrationTests = require('./integration/GetUserMessagesSpec')
-// const deleteUserMessagesIntegrationTests = require('./integration/DeleteUserMessagesSpec')
-
-const {
-  authIntegrationTests,
-  messagesIntegrationTests,
-  miscellaneousIntegrationTests,
-  postUserMessagesIntegrationTests,
-  getUserMessagesIntegrationTests,
-  deleteUserMessagesIntegrationTests
-} = require('./integration')
+const authIntegrationTests = require('./integration/AuthSpec')
+const messagesIntegrationTests = require('./integration/AllMessagesSpec')
+const miscellaneousIntegrationTests = require('./integration/MiscellaneousSpec')
+const postUserMessagesIntegrationTests = require('./integration/PostUserMessagesSpec')
+const getUserMessagesIntegrationTests = require('./integration/GetUserMessagesSpec')
+const deleteUserMessagesIntegrationTests = require('./integration/DeleteUserMessagesSpec')
 
 const miscellaneousUnitTests = require('./unit/MiscellaneousSpec')
 const authUnitTests = require('./unit/AuthSpec')
@@ -63,12 +54,12 @@ describe('API Tests', () => {
       }
     })
   
-    // miscellaneousIntegrationTests()
-    // authIntegrationTests()
-    // messagesIntegrationTests()
-    // postUserMessagesIntegrationTests()
-    // getUserMessagesIntegrationTests()
-    // deleteUserMessagesIntegrationTests()
+    miscellaneousIntegrationTests()
+    authIntegrationTests()
+    messagesIntegrationTests()
+    postUserMessagesIntegrationTests()
+    getUserMessagesIntegrationTests()
+    deleteUserMessagesIntegrationTests()
   })
 
   describe('Unit Tests', () => {
