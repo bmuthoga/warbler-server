@@ -23,7 +23,7 @@ const {
   postUserMessagesIntegrationTests,
   getUserMessagesIntegrationTests,
   deleteUserMessagesIntegrationTests
-} = require('./integration/index.js')
+} = require('./integration')
 
 const miscellaneousUnitTests = require('./unit/MiscellaneousSpec')
 const authUnitTests = require('./unit/AuthSpec')
